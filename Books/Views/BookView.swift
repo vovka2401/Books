@@ -2,18 +2,23 @@ import SwiftUI
 import AVKit
 
 struct BookView: View {
-    @ObservedObject var viewModel: BookViewModel
     @Binding var isActive: Bool
+    @ObservedObject var viewModel: BookViewModel
     @State var speed = Double.zero
     @State var offset = Double.zero
     @State var translation = Double.zero
-    @State var isOn = true
+    @State var isScrollingOn = true
     @State var isNavigationHidden = true
     @State var maxHeight: Double?
     @State var showSettingsView = false
     @State var audioPlayer: AVAudioPlayer?
     var book: Book { viewModel.book }
     let timer = Timer.publish(every: 1 / 60, on: .main, in: .common).autoconnect()
+
+    init(viewModel: BookViewModel, isActive: Binding<Bool>) {
+        self._isActive = isActive
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         ZStack {
@@ -70,24 +75,24 @@ struct BookView: View {
                 }
                 Spacer()
                 Slider(value: $speed, in: 0...5)
-                    .accentColor(isOn ? .accentColor : .red)
+                    .accentColor(isScrollingOn ? .accentColor : .red)
                     .padding(.horizontal, 20)
                     .frame(height: SafeAreaInsets.bottom + 40)
                     .background(Color.white)
                     .onChange(of: speed) { _ in
-                        isOn = true
+                        isScrollingOn = true
                     }
             }
         }
         .ignoresSafeArea()
         .onReceive(timer) { _ in
-            if isOn {
+            if isScrollingOn {
                 offset -= speed * 0.2
             }
         }
         .onReceive(viewModel.$currentChapter) { _ in
             resetOffset()
-            isOn = false
+            isScrollingOn = false
         }
         .sheet(isPresented: $showSettingsView) {
             SettingsView(audioPlayer: $audioPlayer)
@@ -99,9 +104,9 @@ struct BookView: View {
         GeometryReader { proxy in
             if let currentChapter = viewModel.currentChapter {
                 VStack {
-                    Text(currentChapter.title)
+                    Text(currentChapter.titleWrapper)
                         .bold()
-                    Text(currentChapter.text)
+                    Text(currentChapter.textWrapper)
                         .multilineTextAlignment(.leading)
                         .lineLimit(nil)
                         .fixedSize(horizontal: false, vertical: true)
@@ -119,7 +124,7 @@ struct BookView: View {
         .gesture(
             DragGesture(minimumDistance: 20)
                 .onChanged { value in
-                    isOn = false
+                    isScrollingOn = false
                     if value.translation.height + offset < 0, let maxHeight,
                         value.translation.height + offset > -maxHeight {
                         translation = value.translation.height
@@ -138,7 +143,7 @@ struct BookView: View {
             SimultaneousGesture(TapGesture(count: 1), TapGesture(count: 2))
                 .onEnded { gestureValue in
                     if gestureValue.second != nil {
-                        isOn.toggle()
+                        isScrollingOn.toggle()
                     } else if gestureValue.first != nil {
                         withAnimation(.easeInOut) {
                             isNavigationHidden.toggle()
@@ -154,9 +159,3 @@ struct BookView: View {
         translation = 0
     }
 }
-
-//struct BookView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BookView(book: Book(path: nil))
-//    }
-//}

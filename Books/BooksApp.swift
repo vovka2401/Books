@@ -3,16 +3,13 @@ import SwiftUI
 @MainActor
 @main
 struct BooksApp: App {
-    let mainViewModel: MainViewModel
-    
-    init() {
-        mainViewModel = MainViewModel()
-    }
+    @StateObject private var dataController = DataController()
 
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                MainView(viewModel: mainViewModel)
+                MainView()
+                    .environment(\.managedObjectContext, dataController.container.viewContext)
             }
         }
     }

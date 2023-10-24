@@ -1,9 +1,13 @@
 import SwiftUI
 
 struct MainView: View {
-    @ObservedObject var viewModel: MainViewModel
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @FetchRequest(sortDescriptors: []) var books: FetchedResults<Book>
+    @StateObject var viewModel = MainViewModel()
+    @StateObject var bookViewModel = BookViewModel()
     @State var showFilePicker = false
     @State var showBookView = false
+    @State var showOptions = false
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -18,11 +22,20 @@ struct MainView: View {
             allowedContentTypes: [.epub],
             allowsMultipleSelection: false
         ) { result in
-            guard let url = try? result.get().first, let book = Book(path: url) else { return }
+            guard let url = try? result.get().first else { return }
+            let book = Book(path: url, managedObjectContext: managedObjectContext)
             viewModel.addBook(book)
+            try? managedObjectContext.save()
         }
+        .confirmationDialog("Options", isPresented: $showOptions, titleVisibility: .visible) {
+                Button("Delete") {
+                    viewModel.deleteBook(viewModel.selectedBook)
+                    books.drop { $0 == viewModel.selectedBook }
+                    try? managedObjectContext.save()
+                }
+            }
         .fullScreenCover(isPresented: $showBookView) {
-            BookView(viewModel: viewModel.bookViewModel, isActive: $showBookView)
+            BookView(viewModel: bookViewModel, isActive: $showBookView)
         }
     }
 
@@ -49,25 +62,33 @@ struct MainView: View {
     
     var booksView: some View {
         HStack {
-            ForEach(viewModel.books.reversed(), id: \.id) { book in
+            ForEach(books.reversed(), id: \.id) { book in
                 Button {
-                    viewModel.bookViewModel = BookViewModel(book: book)
+                    viewModel.selectedBook = book
+                    bookViewModel.setBook(book: book)
                     showBookView.toggle()
                 } label: {
-                    if let image = book.image {
-                        Image(uiImage: image)
-                            .resizable()
-                            .frame(width: 250, height: 350)
-                            .cornerRadius(25)
-                    } else {
-                        RoundedRectangle(cornerRadius: 25)
-                            .frame(width: 250, height: 350)
-                            .foregroundColor(.gray)
-                            .overlay {
-                                Text(book.title)
-                                    .foregroundColor(.white)
-                            }
+                    VStack {
+                        if let cover = book.coverWrapper {
+                            Image(uiImage: cover)
+                                .resizable()
+                                .frame(width: 250, height: 350)
+                                .cornerRadius(25)
+                        } else {
+                            RoundedRectangle(cornerRadius: 25)
+                                .frame(width: 250, height: 350)
+                                .foregroundColor(.gray)
+                                .overlay {
+                                    Text(book.titleWrapper)
+                                        .foregroundColor(.white)
+                                }
+                        }
                     }
+//                    .onTapGesture {}
+//                    .onLongPressGesture(minimumDuration: 0.5, maximumDistance: 20) {
+//                        viewModel.selectedBook = book
+//                        showOptions.toggle()
+//                    }
                 }
             }
         }
