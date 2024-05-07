@@ -9,6 +9,11 @@ class MainViewModel: ObservableObject {
         selectedBook = books.first
     }
 
+    func selectBook(_ book: Book) {
+        guard selectedBook != book else { return }
+        selectedBook = book
+    }
+
     func addBook(_ book: Book) {
         books.append(book)
     }

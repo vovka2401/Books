@@ -11,7 +11,7 @@ struct MainView: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                newBookView
+                addBookView
                 booksView
             }
             .padding(.horizontal, 20)
@@ -48,7 +48,7 @@ struct MainView: View {
         }
     }
 
-    var newBookView: some View {
+    var addBookView: some View {
         Button {
             showFilePicker.toggle()
         } label: {
@@ -89,12 +89,12 @@ struct MainView: View {
                     }
                 }
                 .onTapGesture {
-                    viewModel.selectedBook = book
-                    bookViewModel.setBook(book: book)
+                    viewModel.selectBook(book)
+                    bookViewModel.openBook(book: book)
                     showBookView.toggle()
                 }
                 .onLongPressGesture(minimumDuration: 0.8, maximumDistance: 20) {
-                    viewModel.selectedBook = book
+                    viewModel.selectBook(book)
                     showOptions.toggle()
                 }
             }

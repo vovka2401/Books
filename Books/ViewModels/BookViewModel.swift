@@ -6,7 +6,7 @@ class BookViewModel: ObservableObject {
     var canGoPreviousChapter: Bool { currentChapter?.number != 0 }
     var canGoNextChapter: Bool { currentChapter?.number != book.chapters.count - 1 }
     
-    public func setBook(book: Book) {
+    func openBook(book: Book) {
         self.book = book
         self.currentChapter = book.chapters.first
     }
