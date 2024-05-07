@@ -16,6 +16,15 @@ struct MainView: View {
             }
             .padding(.horizontal, 20)
         }
+        .ignoresSafeArea()
+        .frame(width: Screen.width, height: Screen.height)
+        .background(
+            LinearGradient(
+                colors: [.white, Color(red: 1, green: 0.5, blue: 0.5)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        )
         .fileImporter(
             isPresented: $showFilePicker,
             allowedContentTypes: [.epub],
