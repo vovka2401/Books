@@ -4,75 +4,68 @@ import UIKit
 import Foundation
 
 class EPUBParser {
-    var image: UIImage?
-    var chapters: [Chapter] = []
-    private var managedObjectContext: NSManagedObjectContext
-    private var document: EPUBDocument
+    var book: Book?
+    private var image: UIImage?
 
-    init?(path: URL, managedObjectContext: NSManagedObjectContext) {
+    init?(path: URL) {
         guard let document = EPUBDocument(url: path) else { return nil }
-        self.document = document
-        self.managedObjectContext = managedObjectContext
-        getImage()
+        fetchImage(from: document)
         let fileManager = FileManager.default
+        var chapters: [Chapter] = []
         if let files = try? fileManager.contentsOfDirectory(atPath: document.contentDirectory.path) {
             var chapterURLs: [URL] = []
-            let htmls = NSArray(array: files).pathsMatchingExtensions(["html"]).sorted(using: .localizedStandard)
+            let htmls = NSArray(array: files).pathsMatchingExtensions(["html", "xhtml"]).sorted(using: .localizedStandard)
             for html in htmls {
-                let title = document.contentDirectory.appendingPathComponent(html)
-                chapterURLs.append(title)
+                let chapterURL = document.contentDirectory.appendingPathComponent(html)
+                chapterURLs.append(chapterURL)
             }
-            chapters = getChapters(from: chapterURLs)
+            chapters = getChapters(from: chapterURLs).sorted { $0.number < $1.number }
         }
+        book = Book(title: document.title ?? "Unknown", cover: image, chapters: chapters)
     }
 
-    func getChapters(from urls: [URL]) -> [Chapter] {
+    private func getChapters(from urls: [URL]) -> [Chapter] {
         var chapters: [Chapter] = []
         for (number, url) in urls.enumerated() {
             if let html = try? String(contentsOf: url),
                let txt = html.htmlToAttributedString  {
                 let title = txt.string.components(separatedBy: "\n").first ?? ""
                 let text = txt.string.replacingOccurrences(of: title, with: "")
-                let chapter = Chapter(context: managedObjectContext)
-                chapter.title = title
-                chapter.text = text
-                chapter.number = Int16(number)
+                let chapter = Chapter(title: title, number: number, text: text)
                 chapters.append(chapter)
             }
         }
         return chapters
     }
     
-    func getImage() {
+    private func fetchImage(from document: EPUBDocument) {
         if let imageURL = document.cover {
-            downloadImage(from: imageURL) { (image) in
+            downloadImage(from: imageURL) { image in
                 if let image = image {
+                    debugPrint("------ Parse cover initiated")
                     self.image = image
                 }
             }
         }
     }
 
-    func downloadImage(from imageURL: URL, completion: @escaping (UIImage?) -> Void) {
+    private func downloadImage(from imageURL: URL, completion: @escaping (UIImage?) -> Void) {
+        let semaphore = DispatchSemaphore.init(value: 0)
         URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
+            defer { semaphore.signal() }
             if let error = error {
                 print("Error downloading image: \(error.localizedDescription)")
                 completion(nil)
                 return
             }
-            
             guard let data = data, let image = UIImage(data: data) else {
                 print("Invalid data or couldn't create an image.")
                 completion(nil)
                 return
             }
-            
             completion(image)
         }
         .resume()
-    }
-    
-    func getTitle() -> String {
-        document.title ?? ""
+        semaphore.wait()
     }
 }

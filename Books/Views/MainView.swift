@@ -1,10 +1,9 @@
 import SwiftUI
 
 struct MainView: View {
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(sortDescriptors: []) var books: FetchedResults<Book>
     @StateObject var viewModel = MainViewModel()
     @StateObject var bookViewModel = BookViewModel()
+    @State var books: [Book] = []
     @State var showFilePicker = false
     @State var showBookView = false
     @State var showOptions = false
@@ -22,20 +21,21 @@ struct MainView: View {
             allowedContentTypes: [.epub],
             allowsMultipleSelection: false
         ) { result in
-            guard let url = try? result.get().first else { return }
-            let book = Book(path: url, managedObjectContext: managedObjectContext)
+            guard let url = try? result.get().first, let book = Book(path: url) else { return }
             viewModel.addBook(book)
-            try? managedObjectContext.save()
+            viewModel.saveBooks()
         }
         .confirmationDialog("Options", isPresented: $showOptions, titleVisibility: .visible) {
                 Button("Delete") {
                     viewModel.deleteBook(viewModel.selectedBook)
-                    books.drop { $0 == viewModel.selectedBook }
-                    try? managedObjectContext.save()
+                    viewModel.saveBooks()
                 }
             }
         .fullScreenCover(isPresented: $showBookView) {
             BookView(viewModel: bookViewModel, isActive: $showBookView)
+        }
+        .onAppear {
+            books = viewModel.books
         }
     }
 
@@ -62,41 +62,39 @@ struct MainView: View {
     
     var booksView: some View {
         HStack {
-            ForEach(books.reversed(), id: \.id) { book in
-                Button {
+            ForEach(viewModel.books.reversed(), id: \.id) { book in
+                VStack {
+                    if let cover = book.cover {
+                        Image(uiImage: cover)
+                            .resizable()
+                            .frame(width: 250, height: 350)
+                            .cornerRadius(25)
+                    } else {
+                        RoundedRectangle(cornerRadius: 25)
+                            .frame(width: 250, height: 350)
+                            .foregroundColor(.gray)
+                            .overlay {
+                                Text(book.title)
+                                    .foregroundColor(.white)
+                            }
+                    }
+                }
+                .onTapGesture {
                     viewModel.selectedBook = book
                     bookViewModel.setBook(book: book)
                     showBookView.toggle()
-                } label: {
-                    VStack {
-                        if let cover = book.coverWrapper {
-                            Image(uiImage: cover)
-                                .resizable()
-                                .frame(width: 250, height: 350)
-                                .cornerRadius(25)
-                        } else {
-                            RoundedRectangle(cornerRadius: 25)
-                                .frame(width: 250, height: 350)
-                                .foregroundColor(.gray)
-                                .overlay {
-                                    Text(book.titleWrapper)
-                                        .foregroundColor(.white)
-                                }
-                        }
-                    }
-//                    .onTapGesture {}
-//                    .onLongPressGesture(minimumDuration: 0.5, maximumDistance: 20) {
-//                        viewModel.selectedBook = book
-//                        showOptions.toggle()
-//                    }
+                }
+                .onLongPressGesture(minimumDuration: 0.8, maximumDistance: 20) {
+                    viewModel.selectedBook = book
+                    showOptions.toggle()
                 }
             }
         }
     }
 }
 
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView(viewModel: MainViewModel())
-    }
-}
+//struct MainView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainView(viewModel: MainViewModel())
+//    }
+//}

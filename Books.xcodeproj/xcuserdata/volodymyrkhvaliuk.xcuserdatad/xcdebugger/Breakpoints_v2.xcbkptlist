@@ -94,9 +94,9 @@
             filePath = "Books/Models/EPUBParser.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "getImage()"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "fetchImage(from:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -159,6 +159,21 @@
                   endingLineNumber = "38"
                   offsetFromSymbolStart = "80">
                </Location>
+               <Location
+                  uuid = "4AFEA918-1D89-49A5-96C5-B77A7DB435CD - 85209365c560fcaa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.UIImage&gt;) -&gt; () in Books.EPUBParser.getImage() -&gt; ()"
+                  moduleName = "Books"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/volodymyrkhvaliuk/XCode%20Projects/Books/Books/Models/EPUBParser.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "44">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -172,9 +187,9 @@
             filePath = "Books/Models/EPUBParser.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "getImage()"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "fetchImage(from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -188,9 +203,9 @@
             filePath = "Books/Models/EPUBParser.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "getImage()"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "fetchImage(from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -204,9 +219,9 @@
             filePath = "Books/Models/EPUBParser.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "getImage()"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "fetchImage(from:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -239,6 +254,21 @@
                   endingLineNumber = "36"
                   offsetFromSymbolStart = "228">
                </Location>
+               <Location
+                  uuid = "CAE52218-26D9-4B40-AC1D-A00DC5DDC13F - 3a39fd2dc48fe3b2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Books.EPUBParser.getImage() -&gt; ()"
+                  moduleName = "Books"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/volodymyrkhvaliuk/XCode%20Projects/Books/Books/Models/EPUBParser.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "228">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -252,9 +282,9 @@
             filePath = "Books/Models/EPUBParser.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "getImage()"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "fetchImage(from:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -317,23 +347,37 @@
                   endingLineNumber = "38"
                   offsetFromSymbolStart = "44">
                </Location>
+               <Location
+                  uuid = "6C925A30-D1FD-4D23-BE33-60736B093717 - 3a39fd2dc48fe391"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Books.EPUBParser.getImage() -&gt; ()"
+                  moduleName = "Books"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/volodymyrkhvaliuk/XCode%20Projects/Books/Books/Models/EPUBParser.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "428">
+               </Location>
+               <Location
+                  uuid = "6C925A30-D1FD-4D23-BE33-60736B093717 - 85209365c560fcaa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.UIImage&gt;) -&gt; () in Books.EPUBParser.getImage() -&gt; ()"
+                  moduleName = "Books"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/volodymyrkhvaliuk/XCode%20Projects/Books/Books/Models/EPUBParser.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "44">
+               </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BF15D6E9-1F44-4400-8AEA-11E7E0A3594E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Books/Models/Book.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "unknown"
-            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -346,8 +390,8 @@
             filePath = "Books/Models/EPUBParser.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "getChapters(from:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,8 +406,8 @@
             filePath = "Books/Models/EPUBParser.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "getChapters(from:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,42 +422,10 @@
             filePath = "Books/Models/EPUBParser.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "init?(path:managedObjectContext:)"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "init?(path:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3F6FDB43-7EF1-49CE-BC44-11BF6EE9BFE8"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Books/Views/MainView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "booksView"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "13302DB3-D8BF-45FF-B8A6-B71105B82CB0"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Books/Views/MainView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "booksView"
-            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -428,8 +440,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
             endingLineNumber = "22"
-            landmarkName = "chaptersWrapper"
-            landmarkType = "24">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -444,7 +456,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
             endingLineNumber = "22"
-            landmarkName = "chooseNextChapter()"
+            landmarkName = "selectNextChapter()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -461,6 +473,324 @@
             startingLineNumber = "20"
             endingLineNumber = "20"
             landmarkName = "init(viewModel:isActive:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "774604F1-F351-466A-B94F-57BF84020CB8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Books/Models/EPUBParser.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "init?(path:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "774604F1-F351-466A-B94F-57BF84020CB8 - b6544f9d6a96653"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Books.EPUBParser.init(path: Foundation.URL) -&gt; Swift.Optional&lt;Books.EPUBParser&gt;"
+                  moduleName = "Books"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/volodymyrkhvaliuk/XCode%20Projects/Books/Books/Models/EPUBParser.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "880">
+               </Location>
+               <Location
+                  uuid = "774604F1-F351-466A-B94F-57BF84020CB8 - b6544f9d6a966ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Books.EPUBParser.init(path: Foundation.URL) -&gt; Swift.Optional&lt;Books.EPUBParser&gt;"
+                  moduleName = "Books"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/volodymyrkhvaliuk/XCode%20Projects/Books/Books/Models/EPUBParser.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "596">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F03B4C3F-6F8B-4C57-B78A-FA5B694D3B0B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Books/Models/EPUBParser.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "init?(path:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F03B4C3F-6F8B-4C57-B78A-FA5B694D3B0B - b6544f9d6a9795b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Books.EPUBParser.init(path: Foundation.URL) -&gt; Swift.Optional&lt;Books.EPUBParser&gt;"
+                  moduleName = "Books"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/volodymyrkhvaliuk/XCode%20Projects/Books/Books/Models/EPUBParser.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "1572">
+               </Location>
+               <Location
+                  uuid = "F03B4C3F-6F8B-4C57-B78A-FA5B694D3B0B - 14bdfe5cb5dbc704"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Books.Chapter, Books.Chapter) -&gt; Swift.Bool in Books.EPUBParser.init(path: Foundation.URL) -&gt; Swift.Optional&lt;Books.EPUBParser&gt;"
+                  moduleName = "Books"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/volodymyrkhvaliuk/XCode%20Projects/Books/Books/Models/EPUBParser.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BF1026A2-824E-4F6B-AF60-36CE54743480"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Books/Models/EPUBParser.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "init?(path:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CC35FF39-9C4E-4D5C-A8E1-D8F4BD7636E4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Books/Models/Book.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "init?(path:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8AFFB7B2-94DB-48F1-BD0B-077D7F5C1F48"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Books/Models/Book.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "init?(path:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8AFFB7B2-94DB-48F1-BD0B-077D7F5C1F48 - be2eff4e9c1d93fd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Books.Book.init(path: Swift.Optional&lt;Foundation.URL&gt;) -&gt; Swift.Optional&lt;Books.Book&gt;"
+                  moduleName = "Books"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/volodymyrkhvaliuk/XCode%20Projects/Books/Books/Models/Book.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "232">
+               </Location>
+               <Location
+                  uuid = "8AFFB7B2-94DB-48F1-BD0B-077D7F5C1F48 - be2eff4e9c1d93fd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Books.Book.init(path: Swift.Optional&lt;Foundation.URL&gt;) -&gt; Swift.Optional&lt;Books.Book&gt;"
+                  moduleName = "Books"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/volodymyrkhvaliuk/XCode%20Projects/Books/Books/Models/Book.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "300">
+               </Location>
+               <Location
+                  uuid = "8AFFB7B2-94DB-48F1-BD0B-077D7F5C1F48 - be2eff4e9c1d93fd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Books.Book.init(path: Swift.Optional&lt;Foundation.URL&gt;) -&gt; Swift.Optional&lt;Books.Book&gt;"
+                  moduleName = "Books"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/volodymyrkhvaliuk/XCode%20Projects/Books/Books/Models/Book.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "412">
+               </Location>
+               <Location
+                  uuid = "8AFFB7B2-94DB-48F1-BD0B-077D7F5C1F48 - be2eff4e9c1d93fd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Books.Book.init(path: Swift.Optional&lt;Foundation.URL&gt;) -&gt; Swift.Optional&lt;Books.Book&gt;"
+                  moduleName = "Books"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/volodymyrkhvaliuk/XCode%20Projects/Books/Books/Models/Book.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "520">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "49314CDE-762F-4F43-AB30-F32585B728D8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Library/Developer/Xcode/DerivedData/Books-ejzenxdtrcvauvcikkgolesbcukc/SourcePackages/checkouts/EPUBKit/Sources/EPUBKit/Model/EPUBDocument.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "init?(url:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "056FB74F-DD9A-483B-A8FC-F55518A3C726"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Library/Developer/Xcode/DerivedData/Books-ejzenxdtrcvauvcikkgolesbcukc/SourcePackages/checkouts/EPUBKit/Sources/EPUBKit/Model/EPUBDocument.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "init?(url:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "90318C8D-35D0-4100-A546-F3466A767A04"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Library/Developer/Xcode/DerivedData/Books-ejzenxdtrcvauvcikkgolesbcukc/SourcePackages/checkouts/EPUBKit/Sources/EPUBKit/Model/EPUBDocument.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "init?(url:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "50D63121-9D57-41F2-91F6-0CD4CF1960BD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Books/Models/EPUBParser.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "init?(path:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F2F30990-2997-44B3-8DD3-11148D13379A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Books/Models/EPUBParser.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "init?(path:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1CFAEC2D-3E66-4D1A-A23F-372A1DDE7866"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Books/Models/EPUBParser.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "init?(path:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7092C974-814D-4941-ABCC-BFC2879DD793"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Books/Models/EPUBParser.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "init?(path:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

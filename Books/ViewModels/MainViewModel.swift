@@ -1,8 +1,13 @@
 import SwiftUI
 
 class MainViewModel: ObservableObject {
-    @Published var books: [Book] = []
+    @Published var books: [Book]
     @Published var selectedBook: Book!
+
+    init() {
+        books = DiskManager.shared.retrieveBooks()
+        selectedBook = books.first
+    }
 
     func addBook(_ book: Book) {
         books.append(book)
@@ -13,8 +18,8 @@ class MainViewModel: ObservableObject {
             books.remove(at: index)
         }
     }
-//
-//    func openBook(_ book: Book) {
-//
-//    }
+    
+    func saveBooks() {
+        DiskManager.shared.saveBooks(books)
+    }
 }

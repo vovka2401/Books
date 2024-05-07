@@ -9,7 +9,7 @@ struct BookView: View {
     @State var translation = Double.zero
     @State var isScrollingOn = true
     @State var isNavigationHidden = true
-    @State var maxHeight: Double?
+    @State var maxPositiveOffset: Double?
     @State var showSettingsView = false
     @State var audioPlayer: AVAudioPlayer?
     var book: Book { viewModel.book }
@@ -43,7 +43,7 @@ struct BookView: View {
                                 }
                                 Spacer()
                                 Button {
-                                    viewModel.choosePreviousChapter()
+                                    viewModel.selectPreviousChapter()
                                 } label: {
                                     Image(systemName: "arrowshape.backward")
                                         .resizable()
@@ -53,7 +53,7 @@ struct BookView: View {
                                 .disabled(!viewModel.canGoPreviousChapter)
                                 Spacer()
                                 Button {
-                                    viewModel.chooseNextChapter()
+                                    viewModel.selectNextChapter()
                                 } label: {
                                     Image(systemName: "arrowshape.forward")
                                         .resizable()
@@ -80,14 +80,32 @@ struct BookView: View {
                     .frame(height: SafeAreaInsets.bottom + 40)
                     .background(Color.white)
                     .onChange(of: speed) { _ in
+                        guard let maxPositiveOffset, maxPositiveOffset > -offset else { return }
                         isScrollingOn = true
                     }
             }
         }
         .ignoresSafeArea()
+        .frame(width: Screen.width, height: Screen.height)
+        .simultaneousGesture(
+            DragGesture()
+                .onEnded {
+                    guard abs($0.translation.height) < 50 else { return }
+                    if $0.translation.width < -50 {
+                        viewModel.selectNextChapter()
+                    } else if $0.translation.width > 50 {
+                        viewModel.selectPreviousChapter()
+                    }
+              }
+        )
         .onReceive(timer) { _ in
-            if isScrollingOn {
-                offset -= speed * 0.2
+            guard isScrollingOn, let maxPositiveOffset else { return }
+            let newOffset = offset - speed * 0.2
+            if maxPositiveOffset < -newOffset {
+                offset = -maxPositiveOffset
+                isScrollingOn = false
+            } else {
+                offset = newOffset
             }
         }
         .onReceive(viewModel.$currentChapter) { _ in
@@ -96,7 +114,7 @@ struct BookView: View {
         }
         .sheet(isPresented: $showSettingsView) {
             SettingsView(audioPlayer: $audioPlayer)
-                .presentationDetents([.medium, .large])
+                .presentationDetents([.fraction(0.25), .medium])
         }
     }
     
@@ -104,16 +122,16 @@ struct BookView: View {
         GeometryReader { proxy in
             if let currentChapter = viewModel.currentChapter {
                 VStack {
-                    Text(currentChapter.titleWrapper)
+                    Text(currentChapter.title)
                         .bold()
-                    Text(currentChapter.textWrapper)
+                    Text(currentChapter.text)
                         .multilineTextAlignment(.leading)
                         .lineLimit(nil)
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(alignment: .leading)
                 }
                 .readSize { size in
-                    maxHeight = size.height - Screen.height + SafeAreaInsets.top + SafeAreaInsets.bottom + 40.0
+                    maxPositiveOffset = size.height - Screen.height + SafeAreaInsets.top + SafeAreaInsets.bottom + 40.0
                 }
             }
         }
@@ -121,17 +139,19 @@ struct BookView: View {
         .padding(.top, SafeAreaInsets.top)
         .padding(.bottom, SafeAreaInsets.bottom + 40)
         .padding(.horizontal, 12)
+        .frame(width: Screen.width)
+        .background(Color.white)
         .gesture(
             DragGesture(minimumDistance: 20)
                 .onChanged { value in
                     isScrollingOn = false
-                    if value.translation.height + offset < 0, let maxHeight,
-                        value.translation.height + offset > -maxHeight {
+                    if value.translation.height + offset < 0, let maxPositiveOffset,
+                        value.translation.height + offset > -maxPositiveOffset {
                         translation = value.translation.height
                     } else if value.translation.height + offset >= 0 {
                         translation = -offset
-                    } else if let maxHeight, value.translation.height + offset <= -maxHeight {
-                        translation = -offset - maxHeight
+                    } else if let maxPositiveOffset, value.translation.height + offset <= -maxPositiveOffset {
+                        translation = -offset - maxPositiveOffset
                     }
                 }
                 .onEnded { value in

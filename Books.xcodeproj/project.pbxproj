@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4421EDDF2ACF75A4001F7EDA /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4421EDDE2ACF75A4001F7EDA /* BookViewModel.swift */; };
+		4430A53B2BD98258009EC8B1 /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = 4430A53A2BD98258009EC8B1 /* Disk */; };
+		4430A53D2BD982A1009EC8B1 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4430A53C2BD982A1009EC8B1 /* Chapter.swift */; };
+		4430A53F2BD982F4009EC8B1 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4430A53E2BD982F4009EC8B1 /* Book.swift */; };
 		445E9FBA2AE014B1009F6CBA /* birds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 445E9FB92AE014B1009F6CBA /* birds.mp3 */; };
 		445E9FBC2AE01591009F6CBA /* SoundTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445E9FBB2AE01591009F6CBA /* SoundTrack.swift */; };
 		4478D7782ACD80B000892400 /* BooksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4478D7772ACD80B000892400 /* BooksApp.swift */; };
@@ -20,12 +23,7 @@
 		4483D0CD2ADEE07B00D4C822 /* SizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4483D0CC2ADEE07B00D4C822 /* SizePreferenceKey.swift */; };
 		448827EF2ADF027A00F53C39 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448827EE2ADF027A00F53C39 /* SettingsView.swift */; };
 		448827F22ADF042500F53C39 /* soft-rain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 448827F12ADF042500F53C39 /* soft-rain.mp3 */; };
-		44ACC56B2AE142DC0005116B /* Book.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44ACC5692AE142DC0005116B /* Book.xcdatamodeld */; };
-		44ACC56D2AE143700005116B /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ACC56C2AE143700005116B /* DataController.swift */; };
-		44ACC57A2AE168FE0005116B /* Chapter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ACC5762AE168FE0005116B /* Chapter+CoreDataClass.swift */; };
-		44ACC57B2AE168FE0005116B /* Chapter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ACC5772AE168FE0005116B /* Chapter+CoreDataProperties.swift */; };
-		44ACC57C2AE168FE0005116B /* Book+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ACC5782AE168FE0005116B /* Book+CoreDataClass.swift */; };
-		44ACC57D2AE168FE0005116B /* Book+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ACC5792AE168FE0005116B /* Book+CoreDataProperties.swift */; };
+		44CB81062BDA7D9F00C665D5 /* DiskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CB81052BDA7D9F00C665D5 /* DiskManager.swift */; };
 		44D2D5462ACEC52800003936 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D2D5452ACEC52800003936 /* Screen.swift */; };
 		44D2D5482ACEC67000003936 /* SafeAreaInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D2D5472ACEC67000003936 /* SafeAreaInsets.swift */; };
 		44D2D5572ACEE00700003936 /* EPUBKit in Frameworks */ = {isa = PBXBuildFile; productRef = 44D2D5562ACEE00700003936 /* EPUBKit */; };
@@ -35,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		4421EDDE2ACF75A4001F7EDA /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
+		4430A53C2BD982A1009EC8B1 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
+		4430A53E2BD982F4009EC8B1 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		445E9FB92AE014B1009F6CBA /* birds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = birds.mp3; sourceTree = "<group>"; };
 		445E9FBB2AE01591009F6CBA /* SoundTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTrack.swift; sourceTree = "<group>"; };
 		4478D7742ACD80B000892400 /* Books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Books.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,12 +48,7 @@
 		4483D0CC2ADEE07B00D4C822 /* SizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizePreferenceKey.swift; sourceTree = "<group>"; };
 		448827EE2ADF027A00F53C39 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		448827F12ADF042500F53C39 /* soft-rain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "soft-rain.mp3"; sourceTree = "<group>"; };
-		44ACC56A2AE142DC0005116B /* Book.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Book.xcdatamodel; sourceTree = "<group>"; };
-		44ACC56C2AE143700005116B /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		44ACC5762AE168FE0005116B /* Chapter+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chapter+CoreDataClass.swift"; sourceTree = "<group>"; };
-		44ACC5772AE168FE0005116B /* Chapter+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chapter+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		44ACC5782AE168FE0005116B /* Book+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book+CoreDataClass.swift"; sourceTree = "<group>"; };
-		44ACC5792AE168FE0005116B /* Book+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		44CB81052BDA7D9F00C665D5 /* DiskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskManager.swift; sourceTree = "<group>"; };
 		44D2D5452ACEC52800003936 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		44D2D5472ACEC67000003936 /* SafeAreaInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaInsets.swift; sourceTree = "<group>"; };
 		44D2D5582ACEE02500003936 /* EPUBParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPUBParser.swift; sourceTree = "<group>"; };
@@ -66,6 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44D2D5572ACEE00700003936 /* EPUBKit in Frameworks */,
+				4430A53B2BD98258009EC8B1 /* Disk in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				4478D7772ACD80B000892400 /* BooksApp.swift */,
-				44ACC5692AE142DC0005116B /* Book.xcdatamodeld */,
 				44D2D5642ACF3A9D00003936 /* Extensions */,
 				44D2D5442ACEC51200003936 /* Utilities */,
 				4478D7872ACD87C100892400 /* Views */,
@@ -135,9 +130,11 @@
 		4478D7892ACD87DA00892400 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				44ACC57E2AE1691C0005116B /* CoreData */,
 				445E9FBB2AE01591009F6CBA /* SoundTrack.swift */,
 				44D2D5582ACEE02500003936 /* EPUBParser.swift */,
+				4430A53C2BD982A1009EC8B1 /* Chapter.swift */,
+				4430A53E2BD982F4009EC8B1 /* Book.swift */,
+				44CB81052BDA7D9F00C665D5 /* DiskManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -157,18 +154,6 @@
 				448827F02ADF041100F53C39 /* Sounds */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		44ACC57E2AE1691C0005116B /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				44ACC5762AE168FE0005116B /* Chapter+CoreDataClass.swift */,
-				44ACC5772AE168FE0005116B /* Chapter+CoreDataProperties.swift */,
-				44ACC5782AE168FE0005116B /* Book+CoreDataClass.swift */,
-				44ACC5792AE168FE0005116B /* Book+CoreDataProperties.swift */,
-				44ACC56C2AE143700005116B /* DataController.swift */,
-			);
-			path = CoreData;
 			sourceTree = "<group>";
 		};
 		44D2D5442ACEC51200003936 /* Utilities */ = {
@@ -208,6 +193,7 @@
 			name = Books;
 			packageProductDependencies = (
 				44D2D5562ACEE00700003936 /* EPUBKit */,
+				4430A53A2BD98258009EC8B1 /* Disk */,
 			);
 			productName = Books;
 			productReference = 4478D7742ACD80B000892400 /* Books.app */;
@@ -239,6 +225,7 @@
 			mainGroup = 4478D76B2ACD80B000892400;
 			packageReferences = (
 				44D2D5552ACEE00700003936 /* XCRemoteSwiftPackageReference "EPUBKit" */,
+				4430A5392BD98258009EC8B1 /* XCRemoteSwiftPackageReference "Disk" */,
 			);
 			productRefGroup = 4478D7752ACD80B000892400 /* Products */;
 			projectDirPath = "";
@@ -270,19 +257,16 @@
 			files = (
 				448827EF2ADF027A00F53C39 /* SettingsView.swift in Sources */,
 				4478D78D2ACD893100892400 /* MainViewModel.swift in Sources */,
+				4430A53F2BD982F4009EC8B1 /* Book.swift in Sources */,
 				44D2D5662ACF3AAD00003936 /* String+.swift in Sources */,
-				44ACC56B2AE142DC0005116B /* Book.xcdatamodeld in Sources */,
-				44ACC57D2AE168FE0005116B /* Book+CoreDataProperties.swift in Sources */,
+				44CB81062BDA7D9F00C665D5 /* DiskManager.swift in Sources */,
 				44D2D5482ACEC67000003936 /* SafeAreaInsets.swift in Sources */,
-				44ACC56D2AE143700005116B /* DataController.swift in Sources */,
 				4421EDDF2ACF75A4001F7EDA /* BookViewModel.swift in Sources */,
-				44ACC57A2AE168FE0005116B /* Chapter+CoreDataClass.swift in Sources */,
-				44ACC57C2AE168FE0005116B /* Book+CoreDataClass.swift in Sources */,
 				4478D77A2ACD80B000892400 /* BookView.swift in Sources */,
+				4430A53D2BD982A1009EC8B1 /* Chapter.swift in Sources */,
 				4483D0CB2ADEE03600D4C822 /* View+.swift in Sources */,
 				4483D0CD2ADEE07B00D4C822 /* SizePreferenceKey.swift in Sources */,
 				44D2D5592ACEE02500003936 /* EPUBParser.swift in Sources */,
-				44ACC57B2AE168FE0005116B /* Chapter+CoreDataProperties.swift in Sources */,
 				4478D7862ACD868700892400 /* MainView.swift in Sources */,
 				4478D7782ACD80B000892400 /* BooksApp.swift in Sources */,
 				44D2D5462ACEC52800003936 /* Screen.swift in Sources */,
@@ -487,6 +471,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4430A5392BD98258009EC8B1 /* XCRemoteSwiftPackageReference "Disk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/saoudrizwan/Disk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.4;
+			};
+		};
 		44D2D5552ACEE00700003936 /* XCRemoteSwiftPackageReference "EPUBKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/witekbobrowski/EPUBKit";
@@ -498,25 +490,17 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4430A53A2BD98258009EC8B1 /* Disk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4430A5392BD98258009EC8B1 /* XCRemoteSwiftPackageReference "Disk" */;
+			productName = Disk;
+		};
 		44D2D5562ACEE00700003936 /* EPUBKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 44D2D5552ACEE00700003936 /* XCRemoteSwiftPackageReference "EPUBKit" */;
 			productName = EPUBKit;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		44ACC5692AE142DC0005116B /* Book.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				44ACC56A2AE142DC0005116B /* Book.xcdatamodel */,
-			);
-			currentVersion = 44ACC56A2AE142DC0005116B /* Book.xcdatamodel */;
-			path = Book.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 4478D76C2ACD80B000892400 /* Project object */;
 }
