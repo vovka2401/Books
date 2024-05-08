@@ -7,24 +7,43 @@ struct MainView: View {
     @State var showFilePicker = false
     @State var showBookView = false
     @State var showOptions = false
+    private var bookSize: CGSize {
+        let width = Screen.width / 2 - 40
+        let height = width * sqrt(2)
+        return CGSize(width: width, height: height)
+    }
 
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                addBookView
-                booksView
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(spacing: 20) {
+                let bookPairs = getBookPairs()
+                ForEach(bookPairs, id: \.0?.id) { bookPair in
+                    HStack(spacing: 20) {
+                        if let leftBook = bookPair.0 {
+                            bookView(leftBook)
+                        } else {
+                            addBookView
+                        }
+                        if let rightBook = bookPair.1 {
+                            bookView(rightBook)
+                        } else {
+                            Spacer()
+                                .frame(width: bookSize.width)
+                        }
+                    }
+                }
             }
-            .padding(.horizontal, 20)
+            .padding(.top, SafeAreaInsets.hasTop ? SafeAreaInsets.top : 20)
+            .padding(.bottom, SafeAreaInsets.hasBottom ? SafeAreaInsets.bottom : 20)
         }
         .ignoresSafeArea()
         .frame(width: Screen.width, height: Screen.height)
         .background(
-            LinearGradient(
-                colors: [.white, Color(red: 1, green: 0.5, blue: 0.5)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
+            Image("background")
+                .resizable()
+                .scaledToFill()
         )
+        .ignoresSafeArea()
         .fileImporter(
             isPresented: $showFilePicker,
             allowedContentTypes: [.epub],
@@ -52,9 +71,15 @@ struct MainView: View {
         Button {
             showFilePicker.toggle()
         } label: {
-            RoundedRectangle(cornerRadius: 25)
-                .frame(width: 250, height: 350)
-                .foregroundColor(.gray)
+            Rectangle()
+                .frame(size: bookSize)
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: [.green, .white],
+                        startPoint: .topTrailing,
+                        endPoint: .bottomLeading
+                    )
+                )
                 .overlay {
                     ZStack {
                         Circle()
@@ -69,36 +94,41 @@ struct MainView: View {
         }
     }
     
-    var booksView: some View {
-        HStack {
-            ForEach(viewModel.books.reversed(), id: \.id) { book in
-                VStack {
-                    if let cover = book.cover {
-                        Image(uiImage: cover)
-                            .resizable()
-                            .frame(width: 250, height: 350)
-                            .cornerRadius(25)
-                    } else {
-                        RoundedRectangle(cornerRadius: 25)
-                            .frame(width: 250, height: 350)
-                            .foregroundColor(.gray)
-                            .overlay {
-                                Text(book.title)
-                                    .foregroundColor(.white)
-                            }
+    func bookView(_ book: Book) -> some View {
+        VStack {
+            if let cover = book.cover {
+                Image(uiImage: cover)
+                    .resizable()
+                    .frame(size: bookSize)
+            } else {
+                Rectangle()
+                    .frame(size: bookSize)
+                    .foregroundColor(.gray)
+                    .overlay {
+                        Text(book.title)
+                            .foregroundColor(.white)
                     }
-                }
-                .onTapGesture {
-                    viewModel.selectBook(book)
-                    bookViewModel.openBook(book: book)
-                    showBookView.toggle()
-                }
-                .onLongPressGesture(minimumDuration: 0.8, maximumDistance: 20) {
-                    viewModel.selectBook(book)
-                    showOptions.toggle()
-                }
             }
         }
+        .onTapGesture {
+            viewModel.selectBook(book)
+            bookViewModel.openBook(book: book)
+            showBookView.toggle()
+        }
+        .onLongPressGesture(minimumDuration: 0.8, maximumDistance: 20) {
+            viewModel.selectBook(book)
+            showOptions.toggle()
+        }
+    }
+}
+
+extension MainView {
+    private func getBookPairs() -> [(Book?, Book?)] {
+        var bookPairs: [(Book?, Book?)] = [(nil, books.first)]
+        for i in stride(from: 1, to: books.count, by: 2) {
+            bookPairs.append((books[i], i < books.count ? books[i + 1] : nil))
+        }
+        return bookPairs
     }
 }
 

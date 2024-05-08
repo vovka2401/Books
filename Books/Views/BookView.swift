@@ -2,27 +2,27 @@ import SwiftUI
 import AVKit
 
 struct BookView: View {
-    @Binding var isActive: Bool
     @ObservedObject var viewModel: BookViewModel
+    @Binding var isActive: Bool
     @State var speed = Double.zero
     @State var offset = Double.zero
     @State var translation = Double.zero
     @State var isScrollingOn = true
     @State var isNavigationHidden = true
-    @State var maxPositiveOffset: Double?
     @State var showSettingsView = false
+    @State var maxPositiveOffset: Double?
     @State var audioPlayer: AVAudioPlayer?
-    var book: Book { viewModel.book }
+    let book: Book
     let timer = Timer.publish(every: 1 / 60, on: .main, in: .common).autoconnect()
 
     init(viewModel: BookViewModel, isActive: Binding<Bool>) {
         self._isActive = isActive
         self.viewModel = viewModel
+        self.book = viewModel.book
     }
     
     var body: some View {
         ZStack {
-            text
             VStack(spacing: 0) {
                 Rectangle()
                     .foregroundColor(.white)
@@ -83,6 +83,9 @@ struct BookView: View {
                         guard let maxPositiveOffset, maxPositiveOffset > -offset else { return }
                         isScrollingOn = true
                     }
+            }
+            .background {
+                text
             }
         }
         .ignoresSafeArea()
