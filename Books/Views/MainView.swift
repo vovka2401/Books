@@ -3,7 +3,6 @@ import SwiftUI
 struct MainView: View {
     @StateObject var viewModel = MainViewModel()
     @StateObject var bookViewModel = BookViewModel()
-    @State var books: [Book] = []
     @State var showFilePicker = false
     @State var showBookView = false
     @State var showOptions = false
@@ -33,16 +32,13 @@ struct MainView: View {
                     }
                 }
             }
-            .padding(.top, SafeAreaInsets.hasTop ? SafeAreaInsets.top : 20)
+            .padding(.top, SafeAreaInsets.top + 20)
             .padding(.bottom, SafeAreaInsets.hasBottom ? SafeAreaInsets.bottom : 20)
+            .frame(width: Screen.width)
         }
         .ignoresSafeArea()
-        .frame(width: Screen.width, height: Screen.height)
-        .background(
-            Image("background")
-                .resizable()
-                .scaledToFill()
-        )
+        .frame(size: Screen.size)
+        .background(Color(red: 0.95, green: 0.95, blue: 0.95))
         .ignoresSafeArea()
         .fileImporter(
             isPresented: $showFilePicker,
@@ -50,20 +46,21 @@ struct MainView: View {
             allowsMultipleSelection: false
         ) { result in
             guard let url = try? result.get().first, let book = Book(path: url) else { return }
-            viewModel.addBook(book)
+            withAnimation(.easeInOut) {
+                viewModel.addBook(book)
+            }
             viewModel.saveBooks()
         }
         .confirmationDialog("Options", isPresented: $showOptions, titleVisibility: .visible) {
                 Button("Delete") {
-                    viewModel.deleteBook(viewModel.selectedBook)
+                    withAnimation(.easeInOut) {
+                        viewModel.deleteBook(viewModel.selectedBook)
+                    }
                     viewModel.saveBooks()
                 }
             }
         .fullScreenCover(isPresented: $showBookView) {
             BookView(viewModel: bookViewModel, isActive: $showBookView)
-        }
-        .onAppear {
-            books = viewModel.books
         }
     }
 
@@ -71,26 +68,22 @@ struct MainView: View {
         Button {
             showFilePicker.toggle()
         } label: {
-            Rectangle()
+            Image("default_book_cover")
+                .resizable()
                 .frame(size: bookSize)
-                .foregroundStyle(
-                    LinearGradient(
-                        colors: [.green, .white],
-                        startPoint: .topTrailing,
-                        endPoint: .bottomLeading
-                    )
-                )
                 .overlay {
                     ZStack {
                         Circle()
                             .stroke(style: .init(lineWidth: 4))
-                            .foregroundColor(.blue)
-                            .frame(width: 100)
+                            .foregroundColor(Color(red: 0.69, green: 0.792, blue: 0.58))
+                            .frame(width: 70)
                         Image(systemName: "plus")
                             .resizable()
-                            .frame(width: 50, height: 50)
+                            .foregroundColor(Color(red: 0.69, green: 0.792, blue: 0.58))
+                            .frame(width: 40, height: 40)
                     }
                 }
+                .shadow(color: .black.opacity(0.3), radius: 10, x: 3, y: 5)
         }
     }
     
@@ -110,6 +103,7 @@ struct MainView: View {
                     }
             }
         }
+        .shadow(color: .black.opacity(0.3), radius: 10, x: 3, y: 5)
         .onTapGesture {
             viewModel.selectBook(book)
             bookViewModel.openBook(book: book)
@@ -117,16 +111,19 @@ struct MainView: View {
         }
         .onLongPressGesture(minimumDuration: 0.8, maximumDistance: 20) {
             viewModel.selectBook(book)
-            showOptions.toggle()
+            withAnimation(.easeInOut) {
+                showOptions.toggle()
+            }
         }
     }
 }
 
 extension MainView {
     private func getBookPairs() -> [(Book?, Book?)] {
+        let books = viewModel.books
         var bookPairs: [(Book?, Book?)] = [(nil, books.first)]
         for i in stride(from: 1, to: books.count, by: 2) {
-            bookPairs.append((books[i], i < books.count ? books[i + 1] : nil))
+            bookPairs.append((books[i], i + 1 < books.count ? books[i + 1] : nil))
         }
         return bookPairs
     }
