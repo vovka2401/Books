@@ -43,7 +43,9 @@ struct BookView: View {
                                 }
                                 Spacer()
                                 Button {
-                                    viewModel.selectPreviousChapter()
+                                    withAnimation(.easeInOut) {
+                                        viewModel.selectPreviousChapter()
+                                    }
                                 } label: {
                                     Image(systemName: "arrowshape.backward")
                                         .resizable()
@@ -53,7 +55,9 @@ struct BookView: View {
                                 .disabled(!viewModel.canGoPreviousChapter)
                                 Spacer()
                                 Button {
-                                    viewModel.selectNextChapter()
+                                    withAnimation(.easeInOut) {
+                                        viewModel.selectNextChapter()
+                                    }
                                 } label: {
                                     Image(systemName: "arrowshape.forward")
                                         .resizable()
@@ -95,9 +99,13 @@ struct BookView: View {
                 .onEnded {
                     guard abs($0.translation.height) < 50 else { return }
                     if $0.translation.width < -50 {
-                        viewModel.selectNextChapter()
+                        withAnimation(.easeInOut) {
+                            viewModel.selectNextChapter()
+                        }
                     } else if $0.translation.width > 50 {
-                        viewModel.selectPreviousChapter()
+                        withAnimation(.easeInOut) {
+                            viewModel.selectPreviousChapter()
+                        }
                     }
               }
         )
